@@ -30,5 +30,14 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-ghost`,
+      options: {
+          apiUrl: `https://mlnotetaking.com`,
+          contentApiKey: `dee77a26c132eb719d74542f5f`,
+          version: `v3` // Ghost API version, optional, defaults to "v3".
+                        // Pass in "v2" if your Ghost install is not on 3.0 yet!!!
+      }
+   }
   ],
 }
