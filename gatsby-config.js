@@ -38,6 +38,7 @@ module.exports = {
           version: `v3` // Ghost API version, optional, defaults to "v3".
                         // Pass in "v2" if your Ghost install is not on 3.0 yet!!!
       }
-   }
+   },
+    `gatsby-plugin-styled-components`
   ],
 }
