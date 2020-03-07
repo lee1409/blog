@@ -39,6 +39,14 @@ module.exports = {
                         // Pass in "v2" if your Ghost install is not on 3.0 yet!!!
       }
    },
-    `gatsby-plugin-styled-components`
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Droid Sans', 'Droid Serif', 'Roboto']
+        }
+      }
+    }
   ],
 }
