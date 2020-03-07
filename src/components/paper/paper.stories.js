@@ -1,21 +1,15 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 import Paper from "./paper"
-import { Button } from '@storybook/react/demo';
+import styled from "styled-components"
+
+const Test = styled.p`
+  font-family: 'Roboto', san-serif;
+  font-size: 50px;
+`
 
 export default {
   title: 'Paper',
   component: Paper,
 };
 
-export const Blank = () => <Paper/>
-
-export const Text = () => <Button onClick={action('clicked')}>Hello Button</Button>;
-
-export const Emoji = () => (
-  <Button onClick={action('clicked')}>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-  </Button>
-);
+export const Blank = () => <Paper><Test>What the fuck</Test></Paper>
