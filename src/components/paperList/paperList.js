@@ -1,50 +1,23 @@
 import React from "react"
 import PropTypes from 'prop-types'
 import styled from "styled-components"
-import Paper from "../paper/paper"
+import Paper from "@material-ui/core/Paper"
+import CustomListItem from "../listItem/customListItem"
 
-export const PaperList = ({title, list}) => {
-
-
-
-
-  const ListItemTitle = styled
-
+export const PaperList = ({list}) => {
+  list = list.slice(0,5);
   return (
     <Paper>
       <Title>
-        {title}
+        Featured Posts
       </Title>
-
-      <List>
-        <li>
-          <a>
-            <ListItem className="list-item">
-              <h4>
-                Introduction to Neural Network
-              </h4>
-              <p>
-                Created at 2019-01
-              </p>
-            </ListItem>
-          </a>
-        </li>
-        <li>
-          <a>
-            <div className="list-item">
-              <h4>
-                Introduction to Neural Network
-              </h4>
-              <p>
-                Created at 2019-01
-              </p>
-            </div>
-          </a>
-        </li>
-      </List>
-      <p>
-        This is a paperlist
-      </p>
+      {
+        list.map(function(el) {
+          // node
+          // el.node
+          return <CustomListItem divider created_at={el.node.created_at} title={el.node.title}/>
+        })
+      }
     </Paper>
 
   )
@@ -52,25 +25,16 @@ export const PaperList = ({title, list}) => {
 
 const Title = styled.h1`
   font-family: 'Roboto', sans-serif;
-  font-size: 44px;
+  font-size: 1.6em;
   font-weight: 100;
+  padding: 24px 0px;
+  height: 40%;
   color: #004D80;
-  display: block;
-`
-const List = styled.ul`
-  list-style-type: none;
-  padding: 0;
-`
-
-
-const ListItem = styled.div`
-  padding-top: 12px;
-  padding-left: 36px;
-  padding-bottom: 12px;
+  text-align: center;
+  margin: 0px;
 `
 
 PaperList.propTypes = {
-  title: PropTypes.string.isRequired,
   list: PropTypes.array.isRequired
 }
 
