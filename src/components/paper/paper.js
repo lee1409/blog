@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import PropTypes from 'prop-types';
 import styled from "styled-components"
 import Card from "@material-ui/core/Card"
 import { CardContent } from "@material-ui/core"
-import Typography from "@material-ui/core/Typography"
 import CardActionArea from "@material-ui/core/CardActionArea"
 import CardMedia from "@material-ui/core/CardMedia"
 import { makeStyles } from '@material-ui/core/styles'
@@ -17,7 +16,6 @@ const useStyles = makeStyles({
     height: '100%'
   },
   small: {
-
     boxSizing: 'border-box',
     gridRowEnd: `span 3`,
     marginBottom: 20,
@@ -31,10 +29,29 @@ const useStyles = makeStyles({
   content: {
     height: "40%"
   }
-})
+});
+
+const Title = styled.h1`
+  font-family: 'Roboto', san-serif;
+  font-weight: 400;
+  color: #707070;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+`
+
+const Content = styled.p`
+  font-family: 'Roboto', san-serif;
+  font-weight: 100;
+  color: #707070;
+  font-size: 12px;
+  margin: 6px 0px;
+  line-height: 1.5em;
+  overflow: hidden;
+`
 
 // This will provide 3 different custom build based on size
-export const CustomPaper = ({children, size, title, src, content}) => {
+export const CustomPaper = ({children, size, title, feature_image, meta_description}) => {
   const classes = useStyles();
 
   switch (size) {
@@ -44,12 +61,12 @@ export const CustomPaper = ({children, size, title, src, content}) => {
         <Card className={classes.small}>
           <CardActionArea className={classes.action}>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Title>
                 {title}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {content}
-              </Typography>
+              </Title>
+              <Content>
+                {meta_description}
+              </Content>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -60,16 +77,16 @@ export const CustomPaper = ({children, size, title, src, content}) => {
           <CardActionArea className={classes.action}>
             <CardMedia
               className={classes.media}
-              image={src}
+              image={feature_image}
               title="Contemplative Reptile"
             />
             <CardContent className={classes.content}>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Title>
                 {title}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {content}
-              </Typography>
+              </Title>
+              <Content>
+                {meta_description}
+              </Content>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -80,7 +97,7 @@ export const CustomPaper = ({children, size, title, src, content}) => {
         return (
           <Card className={classes.small}>
             <CardActionArea className={classes.action}>
-              <CardContent>
+              <CardContent style={{height: '100%', padding: 0}}>
                 {children}
               </CardContent>
             </CardActionArea>
@@ -93,8 +110,7 @@ export const CustomPaper = ({children, size, title, src, content}) => {
 }
 
 CustomPaper.propTypes = {
-  children: PropTypes.node,
-  title: PropTypes.string.isRequired
+  children: PropTypes.node
 };
 
 export default CustomPaper
