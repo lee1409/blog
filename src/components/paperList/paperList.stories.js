@@ -1,12 +1,21 @@
 import React from "react"
 import PaperList from "./paperList"
-import {Paper} from "@material-ui/core"
 
 export default {
   title: "Paper List",
   component: PaperList
 }
 
-export const emptyList = () => <PaperList title={"Example"} list={[]}/>
+const a_list = [
+  {
+    created_at: 2019,
+    title: "Inroduction to neural"
+  },
+  {
+    created_at: 2018,
+    title: "JI"
+  }
+]
 
-export const sample = () => <AutoPaper>Hii</AutoPaper>
+export const Default = () => <PaperList list={a_list} />
+
