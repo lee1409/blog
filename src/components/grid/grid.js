@@ -37,12 +37,12 @@ const Grid  = ({data}) => {
                      data-ad-client="ca-pub-6226350954037529"
                      data-ad-slot="3715005571"></ins>
                 <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
+                  {`(adsbygoogle = window.adsbygoogle || []).push({});`}
                 </script>
               </CustomPaper>
             )
           }
-          return <CustomPaper size={size} {...el} />
+          return <CustomPaper size={size} {...el.node} />
         } )
       }
     </GridContainer>
