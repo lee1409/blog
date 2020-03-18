@@ -33,7 +33,7 @@ module.exports = {
     {
       resolve: `gatsby-source-ghost`,
       options: {
-          apiUrl: `https://mlnotetaking.com`,
+          apiUrl: `https://admin.mlnotetaking.com`,
           contentApiKey: `658c906de3496ccc0907d157c5`,
           version: `v3` // Ghost API version, optional, defaults to "v3".
                         // Pass in "v2" if your Ghost install is not on 3.0 yet!!!

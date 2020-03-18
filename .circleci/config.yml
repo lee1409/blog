@@ -58,6 +58,7 @@ jobs:
           command: |
             sudo npm install -g gatsby-cli
             gatsby build
+            cp ~/project/ads.txt ~/project/public
       - persist_to_workspace:
           root: ~/project
           paths:
