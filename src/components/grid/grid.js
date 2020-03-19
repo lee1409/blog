@@ -29,7 +29,6 @@ const Grid  = ({data}) => {
           if (size === "A") {
             return (
               <CustomPaper>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                 <ins className="adsbygoogle"
                      style={{display:"block"}}
                      data-ad-format="fluid"
@@ -42,7 +41,7 @@ const Grid  = ({data}) => {
               </CustomPaper>
             )
           }
-          return <CustomPaper size={size} {...el.node} />
+          return <CustomPaper size={size} {...el} />
         } )
       }
     </GridContainer>
