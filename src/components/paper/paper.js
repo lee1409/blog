@@ -99,7 +99,7 @@ export const CustomPaper = ({children, size, title, feature_image, meta_descript
         return (
           <Card className={classes.small}>
             <CardActionArea className={classes.action}>
-              <CardContent style={{height: '100%', padding: 0}}>
+              <CardContent style={{height: 130, padding: 0}}>
                 {children}
               </CardContent>
             </CardActionArea>

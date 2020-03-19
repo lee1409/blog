@@ -31,7 +31,7 @@ const Grid  = ({data}) => {
               // min-width:400px;max-width:970px;width:100%;height:90px
               <CustomPaper>
                 <ins className="adsbygoogle"
-                     style={{display:"inline-block", minWidth: 180, maxWidth: 600, width: '100%', height: 130}}
+                     style={{display:"block", minWidth: 180, maxWidth: 600, width: '100%', height: 130}}
                      data-ad-client="ca-pub-6226350954037529"
                      data-ad-slot="2297674631"
                      data-ad-format="auto"
