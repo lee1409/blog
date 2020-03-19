@@ -9,13 +9,13 @@ export const PaperList = ({list}) => {
   return (
     <Paper>
       <Title>
-        Featured Posts
+        Latest Posts
       </Title>
       {
         list.map(function(el) {
           // node
           // el.node
-          return <CustomListItem divider created_at={el.node.created_at} title={el.node.title}/>
+          return <CustomListItem divider {...el}/>
         })
       }
     </Paper>
