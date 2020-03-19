@@ -12,6 +12,7 @@ import "./layout.css"
 import media from "../../styles/media"
 import github from "../../images/github.svg";
 import linkedIn from "../../images/linkedin.svg";
+import { Helmet } from "react-helmet/es/Helmet"
 
 const Content = styled.div`
   margin: 0 auto;
@@ -57,10 +58,10 @@ const Layout = ({ children }) => {
           <FooterContent>
             <Copyright>© {new Date().getFullYear()}, Lee Yee Run</Copyright>
             <div>
-              <a href={"https://github.com/lee1409"} target={"_blank"}>
+              <a href={"https://github.com/lee1409"} target={"_blank"} rel={"noopener noreferrer"}>
                 <img style={{width: 36, margin: 12}} src={github} alt="github.com/lee1409"/>
               </a>
-              <a href={"https://www.linkedin.com/in/lee-yee-run-026a36151/"} target={"_blank"}>
+              <a href={"https://www.linkedin.com/in/lee-yee-run-026a36151/"} target={"_blank"} rel={"noopener noreferrer"}>
                 <img style={{width: 36, margin: 12}} src={linkedIn} alt="linkedin.com/in/lee-yee-run-026a36151/"/>
               </a>
             </div>

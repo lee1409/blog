@@ -6,6 +6,8 @@ import { CardContent } from "@material-ui/core"
 import CardActionArea from "@material-ui/core/CardActionArea"
 import CardMedia from "@material-ui/core/CardMedia"
 import { makeStyles } from '@material-ui/core/styles'
+import { Link } from "gatsby"
+import { navigate } from "@reach/router"
 
 
 const useStyles = makeStyles({
@@ -51,7 +53,7 @@ const Content = styled.p`
 `
 
 // This will provide 3 different custom build based on size
-export const CustomPaper = ({children, size, title, feature_image, meta_description}) => {
+export const CustomPaper = ({children, size, title, feature_image, meta_description, slug}) => {
   const classes = useStyles();
 
   switch (size) {
@@ -59,7 +61,7 @@ export const CustomPaper = ({children, size, title, feature_image, meta_descript
       // Only return text
       return (
         <Card className={classes.small}>
-          <CardActionArea className={classes.action}>
+          <CardActionArea className={classes.action} onClick={() => navigate(`/post/${slug}`)}>
             <CardContent>
               <Title>
                 {title}
@@ -74,7 +76,7 @@ export const CustomPaper = ({children, size, title, feature_image, meta_descript
     case "L":
       return (
         <Card className={classes.large}>
-          <CardActionArea className={classes.action}>
+          <CardActionArea className={classes.action} onClick={() => navigate(`/post/${slug}`)}>
             <CardMedia
               className={classes.media}
               image={feature_image}

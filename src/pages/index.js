@@ -1,15 +1,13 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled, { keyframes } from "styled-components"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import Grid from "../components/grid/grid"
 import PaperList from "../components/paperList/paperList"
+import ghost from "../ghost"
+import { CircularProgress } from "@material-ui/core"
 
-let sample = []
-for (let i = 0;i < 10; i++) {
-  sample.push({title: "Neural", img: "https://picsum.photos/400", content: "Lorem Ipmsum"})
-}
 
 const Section = styled.section`
   display: flex;
@@ -17,6 +15,7 @@ const Section = styled.section`
   overflow: none;
   min-height: 100vh;
   align-items: center;
+  justify-content: center;
   
   @media screen and (min-width: 900px) {
     flex-direction: row;
@@ -75,36 +74,19 @@ const Quote = styled.p`
 `
 
 const IndexPage = () => {
-  const data = useStaticQuery(graphql`
-    query Example {
-      allGhostPost {
-        edges {
-          node {
-            id
-            title
-            reading_time
-            meta_description
-            meta_title
-            feature_image
-            created_at
-          }
-        }
-      }
-    }
-  `)
-  // if (data.AllGhostPost) {
-  //   return (
-  //     <Layout>
-  //       <Grid data={data.AllGhostPost.edges}/>
-  //       <div>
-  //         {JSON.stringify(data)}
-  //       </div>
-  //     </Layout>
-  //   )
-  // } else {
-  //   console.log("hii");
-  //   return <CircularProgress />
-  // }
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    ghost.posts.browse({order: 'published_at DESC'}).then((post) => setData(post)).catch((err) => {
+      console.log(err);
+      return err;
+    })
+  }, [])
+
+  if (data.length === 0) {
+    return <Section><CircularProgress /></Section>
+  }
+
   return (
     <Layout>
       <SEO title={"notetaking"}/>
@@ -118,10 +100,10 @@ const IndexPage = () => {
           </Quote>
         </WidthContainer>
         <WidthContainer>
-          <PaperList list={data.allGhostPost.edges}/>
+          <PaperList list={data}/>
         </WidthContainer>
       </Section>
-      <Grid data={data.allGhostPost.edges} />
+      <Grid data={data} />
     </Layout>
   )
 };
