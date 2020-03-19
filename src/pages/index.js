@@ -63,7 +63,7 @@ const Title = styled.p`
 const Quote = styled.p`
   color: #707070;
   font-family: 'Roboto', san-serif;
-  font-size: 1.025rem;
+  font-size: 13px;
   margin-top: 16px;
   margin-bottom: 16px;
   text-align: center;

@@ -4,6 +4,7 @@ import "../static/screen.css";
 import { Router } from "@reach/router";
 import api from "../ghost"
 import { CircularProgress } from "@material-ui/core"
+import SEO from "../components/seo"
 
 const Content = ({slug}) => {
   const [data, setData] = useState();
@@ -13,7 +14,14 @@ const Content = ({slug}) => {
   }, []);
 
   if (data) {
+    console.log(JSON.stringify(data));
     return <>
+      <SEO
+        title={data.title}
+        description={data.meta_description}
+        meta={[
+          {name: "canonical_url", content: data.canonical_url},
+          ]} />
       <h1>{data.title}</h1>
       <div dangerouslySetInnerHTML={{__html: data.html}} /></>
   }
