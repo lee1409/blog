@@ -18,7 +18,7 @@ const GridContainer = styled.div`
   }
 `
 
-const a_list = ['L', "L", "L", "L", "L", "S", "S", "S", "A", "A"]
+const a_list = ['L', "L", "L", "L", "L", "S", "S", "S", "S", "A"]
 
 const Grid  = ({data}) => {
   return (
@@ -28,13 +28,14 @@ const Grid  = ({data}) => {
           const size = a_list[Math.floor(Math.random() * 10)];
           if (size === "A") {
             return (
+              // min-width:400px;max-width:970px;width:100%;height:90px
               <CustomPaper>
                 <ins className="adsbygoogle"
-                     style={{display:"block"}}
-                     data-ad-format="fluid"
-                     data-ad-layout-key="-gw-3+1f-3d+2z"
+                     style={{display:"inline-block", minWidth: 180, maxWidth: 600, width: '100%', height: 130}}
                      data-ad-client="ca-pub-6226350954037529"
-                     data-ad-slot="3715005571"></ins>
+                     data-ad-slot="2297674631"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
                 <script>
                   {`(adsbygoogle = window.adsbygoogle || []).push({});`}
                 </script>
