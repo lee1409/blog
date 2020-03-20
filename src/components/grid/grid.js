@@ -26,20 +26,24 @@ const Grid  = ({data}) => {
       {
         data.map(el => {
           const size = a_list[Math.floor(Math.random() * 10)];
+          // Add google ads
           if (size === "A") {
             return (
               // min-width:400px;max-width:970px;width:100%;height:90px
-              <CustomPaper>
-                <ins className="adsbygoogle"
-                     style={{display:"block", minWidth: 180, maxWidth: 600, width: '100%', height: 130}}
-                     data-ad-client="ca-pub-6226350954037529"
-                     data-ad-slot="2297674631"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                  {`(adsbygoogle = window.adsbygoogle || []).push({});`}
-                </script>
-              </CustomPaper>
+              <React.Fragment>
+                <CustomPaper>
+                  <ins className="adsbygoogle"
+                       style={{display:"block", minWidth: 180, maxWidth: 600, width: '100%', height: 130}}
+                       data-ad-client="ca-pub-6226350954037529"
+                       data-ad-slot="2297674631"
+                       data-ad-format="auto"
+                       data-full-width-responsive="true"></ins>
+                  <script>
+                    {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+                  </script>
+                </CustomPaper>
+                <CustomPaper size={"L"} {...el} />
+              </React.Fragment>
             )
           }
           return <CustomPaper size={size} {...el} />
