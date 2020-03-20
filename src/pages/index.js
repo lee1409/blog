@@ -89,7 +89,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title={"notetaking"}/>
+      <SEO title={"Notetaking"}/>
       <Section>
         <WidthContainer>
           <Title>
