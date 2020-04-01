@@ -6,7 +6,6 @@ import api from "../ghost"
 import { CircularProgress } from "@material-ui/core"
 import SEO from "../components/seo"
 import Header from "../components/header/header"
-import HomeIcon from '@material-ui/icons/Home'
 import {navigate} from "gatsby";
 
 
