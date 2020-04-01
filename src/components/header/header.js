@@ -7,7 +7,7 @@ const Header = ({title, onClick}) => {
   const [scroll, setScroll] = useState(0);
 
   const handleScroll = () => {
-    setScroll(window.scrollY / 200 * 255);
+    setScroll(window.scrollY / 70 * 255);
   }
 
   useEffect(() => {
