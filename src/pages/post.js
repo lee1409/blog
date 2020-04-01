@@ -7,7 +7,20 @@ import { CircularProgress } from "@material-ui/core"
 import SEO from "../components/seo"
 import Header from "../components/header/header"
 import {navigate} from "gatsby";
+import styled from "styled-components"
 
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  overflow: none;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  
+  @media screen and (min-width: 900px) {
+    flex-direction: row;
+  }
+`
 
 const Content = ({ slug }) => {
   const [data, setData] = useState()
@@ -32,13 +45,10 @@ const Content = ({ slug }) => {
             <h4 className={'content-title'}>{data.title}</h4>
             <div dangerouslySetInnerHTML={{ __html: data.html }}/>
           </section>
-
-
-
       </>
       )
   }
-  return <CircularProgress/>
+  return <Section><CircularProgress style={{color: '#004D80'}}/></Section>
 }
 
 

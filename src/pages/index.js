@@ -87,13 +87,12 @@ const IndexPage = () => {
 
   useEffect(() => {
     ghost.posts.browse({order: 'published_at DESC'}).then((post) => setData(post)).catch((err) => {
-      console.log(err);
       return err;
     })
   }, [])
 
   if (data.length === 0) {
-    return <Section><CircularProgress /></Section>
+    return <Section><CircularProgress style={{color: '#004D80'}}/></Section>
   }
 
   return (
