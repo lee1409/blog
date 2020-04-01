@@ -12,7 +12,6 @@ import "./layout.css"
 import media from "../../styles/media"
 import github from "../../images/github.svg";
 import linkedIn from "../../images/linkedin.svg";
-import { Helmet } from "react-helmet/es/Helmet"
 
 const Content = styled.div`
   margin: 0 auto;
@@ -26,7 +25,7 @@ const Content = styled.div`
 
 const Footer = styled.footer`
   color: white;
-  border-radius: 5px;
+  border-radius: 5px 5px 0px 0px;
   box-shadow: 0px 2px 10px grey;
   background-color: #004D80;
 `
@@ -50,9 +49,7 @@ const Copyright = styled.p`
 const Layout = ({ children }) => {
   return (
     <>
-      <Content>
-        <main>{children}</main>
-      </Content>
+      <main>{children}</main>
       <Footer>
         <Content>
           <FooterContent>
