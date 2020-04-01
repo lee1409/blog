@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
 import styled, { keyframes } from "styled-components"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
@@ -7,6 +6,7 @@ import Grid from "../components/grid/grid"
 import PaperList from "../components/paperList/paperList"
 import ghost from "../ghost"
 import { CircularProgress } from "@material-ui/core"
+import media from "../styles/media"
 
 
 const Section = styled.section`
@@ -72,6 +72,15 @@ const Quote = styled.p`
     text-align: left;
   }
 `
+const Content = styled.div`
+  margin: 0 auto;
+  padding: 0 1.0875rem 1.45rem;
+  
+  @media screen and (min-width: ${media.medium}px) {
+    width: 80%;
+    maxWidth: 1000px;
+  }
+`
 
 const IndexPage = () => {
   const [data, setData] = useState([]);
@@ -90,20 +99,22 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title={"Notetaking"}/>
-      <Section>
-        <WidthContainer>
-          <Title>
-            Notetaking
-          </Title>
-          <Quote>
-            Take notes that matter
-          </Quote>
-        </WidthContainer>
-        <WidthContainer>
-          <PaperList list={data}/>
-        </WidthContainer>
-      </Section>
-      <Grid data={data} />
+      <Content>
+        <Section>
+          <WidthContainer>
+            <Title>
+              Notetaking
+            </Title>
+            <Quote>
+              Take notes that matter
+            </Quote>
+          </WidthContainer>
+          <WidthContainer>
+            <PaperList list={data}/>
+          </WidthContainer>
+        </Section>
+        <Grid data={data} />
+      </Content>
     </Layout>
   )
 };
