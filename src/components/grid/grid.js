@@ -18,7 +18,7 @@ const GridContainer = styled.div`
   }
 `
 
-const a_list = ['L', "L", "L", "L", "L", "S", "S", "S", "S", "A"]
+const a_list = ['L', "L", "L", "L", "L", "S", "S", "S", "S", "S"]
 
 const Grid  = ({data}) => {
   return (
@@ -37,7 +37,7 @@ const Grid  = ({data}) => {
                        data-ad-client="ca-pub-6226350954037529"
                        data-ad-slot="2297674631"
                        data-ad-format="auto"
-                       data-full-width-responsive="true"></ins>
+                       data-full-width-responsive="true" />
                   <script>
                     {`(adsbygoogle = window.adsbygoogle || []).push({});`}
                   </script>
