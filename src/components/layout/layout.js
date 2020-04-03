@@ -8,7 +8,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components";
-import "./layout.css"
 import media from "../../styles/media"
 import github from "../../images/github.svg";
 import linkedIn from "../../images/linkedin.svg";
