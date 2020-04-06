@@ -4,6 +4,7 @@
 }
 
 .header {
+    z-index: 100;
     width: 100%;
     box-sizing: border-box;
     height: 60px;
