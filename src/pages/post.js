@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 import Header from "../components/header/header"
 import {navigate} from "gatsby";
 import styled from "styled-components"
+import { Helmet } from "react-helmet/es/Helmet"
 
 const Section = styled.section`
   display: flex;
@@ -38,6 +39,10 @@ const Content = ({ slug }) => {
           meta={[
             { name: "canonical_url", content: data.canonical_url },
           ]}/>
+          <Helmet>
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+          </Helmet>
         <Header
           title={"Notetaking"}
           onClick={() => navigate('/')}/>
