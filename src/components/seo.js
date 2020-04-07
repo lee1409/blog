@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title, children }) {
+function SEO({ description, lang, meta, title, canonical_url, children }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -70,7 +70,7 @@ function SEO({ description, lang, meta, title, children }) {
     >
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <link rel={"canonical_url"} href={canonical_url} />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKSMM13TZW"></script>
       <script>
         {

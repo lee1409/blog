@@ -1,8 +1,9 @@
-import React, { useEffect } from "react"
+import React from "react"
 import PropTypes from 'prop-types';
 import styled from "styled-components"
 import ListItem from "@material-ui/core/ListItem"
-import { Link } from "gatsby";
+import './style.css'
+import {Link} from 'gatsby'
 
 const Container = styled.div`
   border-box: box-sizing;
@@ -29,24 +30,16 @@ const Content = styled.p`
 
 // List item for featured post
 
-const CustomListItem = ({title, created_at, divider, slug}) => {
-
-  const renderLink = React.useMemo(
-    () =>
-      React.forwardRef((linkProps, ref) => (
-        <Link ref={ref} to={`/post/${slug}`} {...linkProps} />
-      )),
-    [title],
-  );
-
+const CustomListItem = ({title, created_at, divider, slug, key}) => {
   return (
-
-    <ListItem button divider={divider} component={renderLink}>
-      <Container>
-        <Title>{title}</Title>
-        <Content>{`Created at ${created_at}`}</Content>
-      </Container>
-    </ListItem>
+    <Link className={'post-link'} to={`/post/${slug}`}>
+      <ListItem key={key} button divider={divider}>
+        <Container>
+            <Title>{title}</Title>
+            <Content>{`Created at ${created_at}`}</Content>
+        </Container>
+      </ListItem>
+    </Link>
   )
 }
 

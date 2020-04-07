@@ -8,7 +8,8 @@ import SEO from "../components/seo"
 import Header from "../components/header/header"
 import {navigate} from "gatsby";
 import styled from "styled-components"
-
+import useScript from "../hooks"
+import addMath from '../static/check-for-tex'
 const Section = styled.section`
   display: flex;
   flex-direction: column;
@@ -24,10 +25,24 @@ const Section = styled.section`
 
 const Content = ({ slug }) => {
   const [data, setData] = useState()
+  useScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
 
   useEffect(() => {
-    api.posts.read({ slug: slug }, { formats: ["html", "plaintext"] }).then((resp) => setData(resp))
-  }, [])
+    const script = document.createElement('script');
+    api.posts.read({ slug: slug }, { formats: ["html", "plaintext"] }).then((resp) => {
+      setData(resp)
+    })
+
+    // Add ads
+    const ads = document.createElement('script');
+    ads.text = '(adsbygoogle = window.adsbygoogle || []).push({});'
+    document.body.appendChild(ads);
+
+    addMath()
+    return () => {
+      document.body.removeChild(ads)
+    }
+  }, [slug])
 
   if (data) {
     return (
@@ -35,23 +50,28 @@ const Content = ({ slug }) => {
         <SEO
           title={data.title}
           description={data.meta_description}
-          meta={[
-            { name: "canonical_url", content: data.canonical_url },
-          ]}>
-          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" />
-          <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" />
-        </SEO>
+          canonical_url={data.canonical_url}/>
         <Header
           title={"Notetaking"}
           onClick={() => navigate('/')}/>
           <section className={'content'}>
             <h4 className={'content-title'}>{data.title}</h4>
             <div dangerouslySetInnerHTML={{ __html: data.html }}/>
+            <ins className="adsbygoogle"
+                 style={{display:"block", textAlign:'center'}}
+                 data-ad-layout="in-article"
+                 data-ad-format="fluid"
+                 data-ad-client="ca-pub-6226350954037529"
+                 data-ad-slot="2747597745">
+            </ins>
           </section>
       </>
       )
   }
-  return <Section><CircularProgress style={{color: '#004D80'}}/></Section>
+  return <Section>
+    <CircularProgress style={{color: '#004D80'}}/>
+    <p>Loading</p>
+  </Section>
 }
 
 
