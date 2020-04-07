@@ -1,0 +1,4 @@
+.post-link:hover, .post-link:visited, .post-link:link, .post-link:active
+{
+    text-decoration: none;
+}

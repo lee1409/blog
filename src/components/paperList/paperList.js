@@ -12,10 +12,10 @@ export const PaperList = ({list}) => {
         Latest Posts
       </Title>
       {
-        list.map(function(el) {
+        list.map(function(el, ind) {
           // node
           // el.node
-          return <CustomListItem divider {...el}/>
+          return <CustomListItem key={ind} divider {...el}/>
         })
       }
     </Paper>
