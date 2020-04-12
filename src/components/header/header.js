@@ -22,8 +22,8 @@ const Header = ({title, onClick}) => {
     <React.Fragment>
       <div className={"header header-effect"}
            style={{backgroundColor: headerColor}}>
-        <IconButton>
-          <span style={{color: contentColor}} className="material-icons icon" onClick={onClick}>
+        <IconButton onClick={onClick}>
+          <span style={{color: contentColor}} className="material-icons icon">
           home
           </span>
         </IconButton>

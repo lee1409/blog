@@ -6,8 +6,7 @@ import { CardContent } from "@material-ui/core"
 import CardActionArea from "@material-ui/core/CardActionArea"
 import CardMedia from "@material-ui/core/CardMedia"
 import { makeStyles } from '@material-ui/core/styles'
-import { Link } from "gatsby"
-import { navigate } from "@reach/router"
+import { navigate } from "gatsby"
 
 
 const useStyles = makeStyles({
