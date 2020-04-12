@@ -28,20 +28,10 @@ const Content = ({ slug }) => {
   useScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
 
   useEffect(() => {
-    const script = document.createElement('script');
     api.posts.read({ slug: slug }, { formats: ["html", "plaintext"] }).then((resp) => {
       setData(resp)
     })
-
-    // Add ads
-    const ads = document.createElement('script');
-    ads.text = '(adsbygoogle = window.adsbygoogle || []).push({});'
-    document.body.appendChild(ads);
-
     addMath()
-    return () => {
-      document.body.removeChild(ads)
-    }
   }, [slug])
 
   if (data) {
@@ -57,13 +47,6 @@ const Content = ({ slug }) => {
           <section className={'content'}>
             <h4 className={'content-title'}>{data.title}</h4>
             <div dangerouslySetInnerHTML={{ __html: data.html }}/>
-            <ins className="adsbygoogle"
-                 style={{display:"block", textAlign:'center'}}
-                 data-ad-layout="in-article"
-                 data-ad-format="fluid"
-                 data-ad-client="ca-pub-6226350954037529"
-                 data-ad-slot="2747597745">
-            </ins>
           </section>
       </>
       )
