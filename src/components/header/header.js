@@ -16,7 +16,7 @@ const Header = ({title, onClick}) => {
   }, [])
 
   const headerColor = `rgba(0, 77, 128, ${scroll/255}`
-  const contentColor = `rgba(${scroll+50}, ${scroll+50}, ${scroll+50})`
+  const contentColor = `rgb(${scroll+50}, ${scroll+50}, ${scroll+50})`
 
   return (
     <React.Fragment>
