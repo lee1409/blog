@@ -29,8 +29,17 @@ const Content = ({ slug }) => {
   useScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
 
   useEffect(() => {
-    window.adsbygoogle = window.adsbygoogle || []
     api.posts.read({ slug: slug }, { formats: ["html", "plaintext"] }).then((resp) => {
+      setData(resp)
+
+      if (window.MathJax) {
+        window.MathJax.typeset();
+      } else {
+        addMath()
+      }
+
+      // Set up google adsense
+      window.adsbygoogle = window.adsbygoogle || []
       let extractscript = /<script>.*?<\/script>/gis.exec(resp.html);
       if (extractscript){
         extractscript.map(() => {
@@ -41,14 +50,11 @@ const Content = ({ slug }) => {
           }
         })
       }
-      setData(resp)
-      addMath()
     })
 
-    return (() => {
-      delete window.adsbygoogle
-    })
   }, [slug])
+
+
 
   if (data) {
     return (
@@ -60,10 +66,10 @@ const Content = ({ slug }) => {
         <Header
           title={"Notetaking"}
           onClick={() => navigate('/')}/>
-          <section className={'content'}>
-            <h4 className={'content-title'}>{data.title}</h4>
-            <div dangerouslySetInnerHTML={{ __html: data.html }}/>
-          </section>
+        <section className={'content'}>
+          <h4 className={'content-title'}>{data.title}</h4>
+          <div id={'data-content'} dangerouslySetInnerHTML={{ __html: data.html }}/>
+        </section>
       </>
       )
   }
