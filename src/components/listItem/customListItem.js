@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from "styled-components"
 import ListItem from "@material-ui/core/ListItem"
 import './style.css'
-import {Link} from 'gatsby'
 
 const Container = styled.div`
   border-box: box-sizing;
@@ -32,14 +31,14 @@ const Content = styled.p`
 
 const CustomListItem = ({title, created_at, divider, slug, key}) => {
   return (
-    <Link className={'post-link'} to={`/post/${slug}`}>
+    <a className={'post-link'} href={`/post/${slug}`}>
       <ListItem key={key} button divider={divider}>
         <Container>
             <Title>{title}</Title>
             <Content>{`Created at ${created_at}`}</Content>
         </Container>
       </ListItem>
-    </Link>
+    </a>
   )
 }
 

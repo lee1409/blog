@@ -7,6 +7,7 @@ import CardActionArea from "@material-ui/core/CardActionArea"
 import CardMedia from "@material-ui/core/CardMedia"
 import { makeStyles } from '@material-ui/core/styles'
 import { navigate } from "gatsby"
+import './style.css'
 
 
 const useStyles = makeStyles({
@@ -60,16 +61,18 @@ export const CustomPaper = ({children, size, title, feature_image, meta_descript
       // Only return text
       return (
         <Card className={classes.small}>
-          <CardActionArea className={classes.action} onClick={() => navigate(`/post/${slug}`)}>
-            <CardContent>
-              <Title>
-                {title}
-              </Title>
-              <Content>
-                {meta_description}
-              </Content>
-            </CardContent>
-          </CardActionArea>
+          <a className={'post-link'} href={`/post/${slug}`}>
+            <CardActionArea className={classes.action}>
+              <CardContent>
+                <Title>
+                  {title}
+                </Title>
+                <Content>
+                  {meta_description}
+                </Content>
+              </CardContent>
+            </CardActionArea>
+          </a>
         </Card>
       )
     case "L":
