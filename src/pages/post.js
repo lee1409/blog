@@ -10,6 +10,7 @@ import {navigate} from "gatsby";
 import styled from "styled-components"
 import useScript from "../hooks"
 import addMath from '../static/check-for-tex'
+
 const Section = styled.section`
   display: flex;
   flex-direction: column;
@@ -29,9 +30,11 @@ const Content = ({ slug }) => {
 
   useEffect(() => {
     api.posts.read({ slug: slug }, { formats: ["html", "plaintext"] }).then((resp) => {
+      let extractscript = /<script>.*?<\/script>/gis.exec(resp.html);
+      extractscript.map(() => window.eval('(adsbygoogle = window.adsbygoogle || []).push({});'))
       setData(resp)
+      addMath()
     })
-    addMath()
   }, [slug])
 
   if (data) {
