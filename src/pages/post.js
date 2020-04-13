@@ -29,12 +29,13 @@ const Content = ({ slug }) => {
   useScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
 
   useEffect(() => {
+    window.adsbygoogle = window.adsbygoogle || []
     api.posts.read({ slug: slug }, { formats: ["html", "plaintext"] }).then((resp) => {
       let extractscript = /<script>.*?<\/script>/gis.exec(resp.html);
       if (extractscript){
         extractscript.map(() => {
           try {
-            window.eval('(adsbygoogle = window.adsbygoogle || []).push({});')
+            window.adsbygoogle.push({})
           } catch (e) {
             console.log(e.message);
           }
@@ -42,6 +43,10 @@ const Content = ({ slug }) => {
       }
       setData(resp)
       addMath()
+    })
+
+    return (() => {
+      delete window.adsbygoogle
     })
   }, [slug])
 
