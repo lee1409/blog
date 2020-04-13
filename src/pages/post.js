@@ -31,7 +31,15 @@ const Content = ({ slug }) => {
   useEffect(() => {
     api.posts.read({ slug: slug }, { formats: ["html", "plaintext"] }).then((resp) => {
       let extractscript = /<script>.*?<\/script>/gis.exec(resp.html);
-      extractscript.map(() => window.eval('(adsbygoogle = window.adsbygoogle || []).push({});'))
+      if (extractscript){
+        extractscript.map(() => {
+          try {
+            window.eval('(adsbygoogle = window.adsbygoogle || []).push({});')
+          } catch (e) {
+            console.log(e.message);
+          }
+        })
+      }
       setData(resp)
       addMath()
     })
