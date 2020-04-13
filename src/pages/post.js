@@ -54,8 +54,6 @@ const Content = ({ slug }) => {
 
   }, [slug])
 
-
-
   if (data) {
     return (
       <>
