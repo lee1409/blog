@@ -43,8 +43,8 @@ jobs:
       env:
         TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
       run: |
-        git config --global user.email "emailaddress@yahoo.com"
-        git config --global user.name "username"
+        git config --global user.email "leerun1409@gmail.com"
+        git config --global user.name "lee1409"
         cd public
         git init
         git add -f .
