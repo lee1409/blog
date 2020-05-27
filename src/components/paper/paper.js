@@ -61,7 +61,7 @@ export const CustomPaper = ({children, size, frontmatter }) => {
       // Only return text
       return (
         <Card className={classes.small}>
-          <a className={'post-link'} href={`/post/${frontmatter.slug}`}>
+          <a className={'post-link'} href={`${frontmatter.slug}`}>
             <CardActionArea className={classes.action}>
               <CardContent>
                 <Title>

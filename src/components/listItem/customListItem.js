@@ -31,7 +31,7 @@ const Content = styled.p`
 
 const CustomListItem = ({id, frontmatter, divider}) => {
   return (
-    <a className={'post-link'} href={`/post/${frontmatter.slug}`}>
+    <a className={'post-link'} href={`${frontmatter.slug}`}>
       <ListItem key={id} button divider={divider}>
         <Container>
             <Title>{frontmatter.title}</Title>
