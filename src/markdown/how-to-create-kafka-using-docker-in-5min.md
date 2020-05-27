@@ -1,3 +1,9 @@
+---
+slug: "/post/create-real-time-streaming-data"
+date: "2019-05-04"
+title: "Create real-time streaming data (WebSocket) using Tornado"
+---
+
 This experiment I spent so much time on it finding the source and figuring out how Kafka works. Damnn...
 
 I guess everyone already knew what Kafka is, so let's get into the installation step. Before that, there are some requirements needed before installing Kafka. This is just only development purposes. 

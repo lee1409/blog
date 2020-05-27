@@ -1,6 +1,11 @@
-> confluent_kafka.avro.serializer.SerializerError: message does not start with magic byte
+---
+slug: "/post/fixing-kafka-string-key-and-avro-value-python"
+date: "2019-05-04"
+title: "Fixing Kafka String Key and Avro Value Python"
+---
+# Fixing Kafka String Key and Avro Value Python
+>> confluent_kafka.avro.serializer.SerializerError: message does not start with magic byte
 >
-> 
 
 Damn confluent-python... I faced a lot of challenges when trying to set up kafka thing. First, I encountered listener protocol mapping, then KSQL, and now even confluent-kafka. -.-
 

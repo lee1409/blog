@@ -1,3 +1,11 @@
+---
+slug: "/post/truncate-your-time-series"
+date: "2019-05-04"
+title: "Truncate your time series"
+---
+
+# Truncate your time series
+
 One day, you have a data. It looks like this.
 
 | Time     | Group |

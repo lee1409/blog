@@ -1,4 +1,10 @@
-Create real-time streaming data (WebSocket) using Tornado
+---
+slug: "/post/create-real-time-streaming-data"
+date: "2019-05-04"
+title: "Create real-time streaming data (WebSocket) using Tornado"
+---
+
+# Create real-time streaming data (WebSocket) using Tornado
 
 Today learnt tornado to serve stream data to user. Tornado is python web framework, but it is interesting because it only runs a thread per process but still can serve many clients due to its asynchronous design. Wait, asynchronous? Actually there are many terminologies you need to know. 
 
@@ -39,8 +45,6 @@ socket.onmessage = function(event) {
 };
 ```
 
-Then the data will automatically po
-
-pulate out. 
+Then the data will automatically populate out. 
 
 image
