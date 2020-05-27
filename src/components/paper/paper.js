@@ -53,7 +53,7 @@ const Content = styled.p`
 `
 
 // This will provide 3 different custom build based on size
-export const CustomPaper = ({children, size, title, feature_image, meta_description, slug}) => {
+export const CustomPaper = ({children, size, frontmatter }) => {
   const classes = useStyles();
 
   switch (size) {
@@ -61,14 +61,14 @@ export const CustomPaper = ({children, size, title, feature_image, meta_descript
       // Only return text
       return (
         <Card className={classes.small}>
-          <a className={'post-link'} href={`/post/${slug}`}>
+          <a className={'post-link'} href={`/post/${frontmatter.slug}`}>
             <CardActionArea className={classes.action}>
               <CardContent>
                 <Title>
-                  {title}
+                  {frontmatter.title}
                 </Title>
                 <Content>
-                  {meta_description}
+                  {frontmatter.meta_description}
                 </Content>
               </CardContent>
             </CardActionArea>
@@ -78,18 +78,18 @@ export const CustomPaper = ({children, size, title, feature_image, meta_descript
     case "L":
       return (
         <Card className={classes.large}>
-          <CardActionArea className={classes.action} onClick={() => navigate(`/post/${slug}`)}>
+          <CardActionArea className={classes.action} onClick={() => navigate(`/post/${frontmatter.slug}`)}>
             <CardMedia
               className={classes.media}
-              image={feature_image}
+              image={frontmatter.feature_image}
               title="Contemplative Reptile"
             />
             <CardContent className={classes.content}>
               <Title>
-                {title}
+                {frontmatter.title}
               </Title>
               <Content>
-                {meta_description}
+                {frontmatter.meta_description}
               </Content>
             </CardContent>
           </CardActionArea>

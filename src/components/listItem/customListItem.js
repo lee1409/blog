@@ -29,13 +29,13 @@ const Content = styled.p`
 
 // List item for featured post
 
-const CustomListItem = ({title, created_at, divider, slug, key}) => {
+const CustomListItem = ({id, frontmatter, divider}) => {
   return (
-    <a className={'post-link'} href={`/post/${slug}`}>
-      <ListItem key={key} button divider={divider}>
+    <a className={'post-link'} href={`/post/${frontmatter.slug}`}>
+      <ListItem key={id} button divider={divider}>
         <Container>
-            <Title>{title}</Title>
-            <Content>{`Created at ${created_at}`}</Content>
+            <Title>{frontmatter.title}</Title>
+            <Content>{`Created at ${frontmatter.date}`}</Content>
         </Container>
       </ListItem>
     </a>
