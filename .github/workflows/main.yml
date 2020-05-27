@@ -7,8 +7,6 @@ name: CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -36,4 +34,10 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public  
+        publish_dir: ./public
+    - name: Deploy Files
+      run: |
+        git config user.name ${{ secrets.GH_USER }}
+        git config user.email "${{ secrets.GH_MAIL }}"
+        git remote add page "https://${{ secrets.GH_TOKEN}}@github.com/:user/:repo.git"
+        git push -f page master
