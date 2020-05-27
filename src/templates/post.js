@@ -6,17 +6,19 @@ import SEO from "../components/seo"
 import Header from "../components/header/header"
 import { graphql, navigate } from "gatsby"
 
-export default function Post({data}) {
+export default function Template({data}) {
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
+  console.log(html)
   return (
     <>
-      <SEO title={frontmatter.title}>
-        <Header onClick={() => navigate("/")} title={"Notetaking"}/>
-        <section className={"content"}>
-          <div className={"blog-post-content"} dangerouslySetInnerHTML={{ __html: html }}/>
-        </section>
-      </SEO>
+      <Layout>
+        <SEO title={frontmatter.title}></SEO>
+          <Header onClick={() => navigate("/")} title={"Notetaking"}/>
+          <section className={"content"}>
+            <div id={'data-content'} dangerouslySetInnerHTML={{ __html: html }}/>
+          </section>
+      </Layout>
     </>
   )
   {/*if (data) {*/
