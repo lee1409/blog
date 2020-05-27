@@ -10,9 +10,6 @@
 // Implement the Gatsby API “onCreatePage”. This is
 // called after every page is created.
 
-const path = require("path")
-const fs = require("fs")
-
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
   const blogPostTemplate = require.resolve(`./src/templates/post.js`)
@@ -47,23 +44,4 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     })
   })
-}
-
-// Export to dist as well
-exports.onPreInit = () => {
-  if (process.argv[2] === "build") {
-    fs.rmdirSync(path.join(__dirname, "doc"), { recursive: true })
-    fs.renameSync(
-      path.join(__dirname, "public"),
-      path.join(__dirname, "public_dev")
-    )
-  }
-}
-
-exports.onPostBuild = () => {
-  fs.renameSync(path.join(__dirname, "public"), path.join(__dirname, "dist"))
-  fs.renameSync(
-    path.join(__dirname, "public_dev"),
-    path.join(__dirname, "public")
-  )
 }

@@ -5,7 +5,6 @@ import Paper from "@material-ui/core/Paper"
 import CustomListItem from "../listItem/customListItem"
 
 export const PaperList = ({list}) => {
-  console.log(list)
   return (
     <Paper>
       <Title>
