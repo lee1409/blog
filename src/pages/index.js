@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import styled, { keyframes } from "styled-components"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 import Grid from "../components/grid/grid"
 import PaperList from "../components/paperList/paperList"
-import ghost from "../ghost"
-import { CircularProgress } from "@material-ui/core"
 import media from "../styles/media"
+import { graphql } from "gatsby"
 
 
 const Section = styled.section`
@@ -30,7 +29,7 @@ const fade = keyframes`
   to {
     opacity: 100%;
   }
-`;
+`
 
 const WidthContainer = styled.div`
   width: 100%;
@@ -82,18 +81,8 @@ const Content = styled.div`
   }
 `
 
-const IndexPage = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    ghost.posts.browse({order: 'published_at DESC'}).then((post) => setData(post)).catch((err) => {
-      return err;
-    })
-  }, [])
-
-  if (data.length === 0) {
-    return <Section><CircularProgress style={{color: '#004D80'}}/></Section>
-  }
+export default function ({data}) {
+  const { allMarkdownRemark } = data;
 
   return (
     <Layout>
@@ -109,13 +98,30 @@ const IndexPage = () => {
             </Quote>
           </WidthContainer>
           <WidthContainer>
-            <PaperList list={data}/>
+            <PaperList list={allMarkdownRemark.edges}/>
           </WidthContainer>
         </Section>
-        <Grid data={data} />
+        <Grid data={allMarkdownRemark.edges}/>
       </Content>
     </Layout>
   )
-};
+}
 
-export default IndexPage
+export const pageQuery = graphql`
+  query allMarkdown {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 1000
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            slug
+            date
+          }
+        }
+      }
+    }
+  }
+`

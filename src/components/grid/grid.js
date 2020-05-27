@@ -42,11 +42,11 @@ const Grid  = ({data}) => {
                     {`(adsbygoogle = window.adsbygoogle || []).push({});`}
                   </script>
                 </CustomPaper>
-                <CustomPaper size={"L"} {...el} />
+                <CustomPaper size={"L"} {...el.node} />
               </React.Fragment>
             )
           }
-          return <CustomPaper size={size} {...el} />
+          return <CustomPaper size={size} {...el.node} />
         } )
       }
     </GridContainer>

@@ -5,7 +5,6 @@ import Paper from "@material-ui/core/Paper"
 import CustomListItem from "../listItem/customListItem"
 
 export const PaperList = ({list}) => {
-  list = list.slice(0,5);
   return (
     <Paper>
       <Title>
@@ -13,9 +12,7 @@ export const PaperList = ({list}) => {
       </Title>
       {
         list.map(function(el, ind) {
-          // node
-          // el.node
-          return <CustomListItem key={ind} divider {...el}/>
+          return <CustomListItem key={ind} divider {...el.node}/>
         })
       }
     </Paper>
