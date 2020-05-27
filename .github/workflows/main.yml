@@ -38,14 +38,16 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
+        
     - name: GitHub Push
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        # Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        # Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})
-        repository: "lee1409/lee1409.github.io"
-        # Determines if force push is used
-        force: true
-        # Directory to change to before pushing.
-        directory: ./public
+      env:
+        TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+      run: |
+        git config --global user.email "emailaddress@yahoo.com"
+        git config --global user.name "username"
+        cd public
+        git init
+        git add -f .
+        git commit -m $GITHUB_SHA
+        git remote set-url origin https://lee1409:$TOKEN@github.com/lee1409/lee1409.github.io.git
+        git push -f origin master
