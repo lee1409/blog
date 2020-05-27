@@ -28,6 +28,7 @@ jobs:
       
     - name: Build Gatsby
       run: |
+        sudo yarn global add gatsby-cli
         yarn install
         gatsby build
         
