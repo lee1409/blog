@@ -49,5 +49,5 @@ jobs:
         git init
         git add -f .
         git commit -m $GITHUB_SHA
-        git remote set-url origin https://lee1409:$TOKEN@github.com/lee1409/lee1409.github.io.git
+        git remote add origin https://lee1409:$TOKEN@github.com/lee1409/lee1409.github.io.git
         git push -f origin master
